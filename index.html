@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotazník</title>
+<script>
+  var odkazy = [
+    'https://tally.so/r/yPVP84',
+    'https://tally.so/r/J959Ed',
+    'https://tally.so/r/kdMdjM'
+  ];
+  var url = odkazy[Math.floor(Math.random() * odkazy.length)];
+  // stejný respondent dostane při návratu stejnou verzi
+  try {
+    var ulozeno = localStorage.getItem('verze_dotazniku');
+    if (ulozeno && odkazy.indexOf(ulozeno) !== -1) { url = ulozeno; }
+    else { localStorage.setItem('verze_dotazniku', url); }
+  } catch (e) {}
+  window.location.replace(url);
+</script>
+</head>
+<body style="font-family:sans-serif;padding:24px">
+  <p>Přesměrování na dotazník… Pokud se nic nestane,
+  <a id="odkaz" href="https://tally.so/r/yPVP84">klikněte sem</a>.</p>
+  <script>document.getElementById('odkaz').href = url;</script>
+</body>
+</html>
